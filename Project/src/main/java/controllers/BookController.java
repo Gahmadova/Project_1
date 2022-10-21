@@ -5,6 +5,8 @@ import driver.Driver;
 import entities.Book;
 import io.javalin.http.Handler;
 
+import java.util.List;
+
 public class BookController {
     // These controllers and using what is called Lambdas
     public Handler createBook = (ctx) ->{
@@ -15,6 +17,14 @@ public class BookController {
         String bookJson = gson.toJson(registeredBook);
         ctx.status(201);
         ctx.result(bookJson);
+    };
+    public Handler getAllBooks = (ctx) ->{
+        List<Book> books = Driver.bookService.getAllBooks();
+        Gson gson = new Gson();
+        String json = gson.toJson(books);
+        ctx.result(json);
+
+
     };
 
     public Handler getBookByIdHandler = (ctx) ->{
