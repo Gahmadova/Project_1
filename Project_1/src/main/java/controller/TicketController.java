@@ -1,9 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
-import dev.passos.driver.Driver;
-import dev.passos.entity.Ticket;
-import dev.passos.service.TicketService;
+
 import entity.Ticket;
 import io.javalin.http.Handler;
 import service.TicketService;

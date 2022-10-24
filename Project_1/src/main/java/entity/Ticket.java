@@ -1,13 +1,13 @@
 package entity;
 
 public class Ticket {
-    // instance variables
+
     private int id;
-    private int amount = 0;
     private String description = "";
+    private int amount = 0;
     private boolean status = false;
 
-    // getters and setter
+
     public int getId() {
         return id;
     }

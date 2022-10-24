@@ -1,12 +1,9 @@
-package DAO;
-
-import dev.passos.entity.Ticket;
-import dev.passos.interfaces.TicketCRUD;
-import dev.passos.utility.DBConn;
+package DecentralizedAO;
 import entity.Ticket;
-import interfaces.TicketCRUD;
+import coalition.TicketCRUD;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 
 public class TicketDAOPostgres implements TicketCRUD {
@@ -23,6 +20,7 @@ public class TicketDAOPostgres implements TicketCRUD {
 
     @Override
     public Ticket createTicket(Ticket ticket) {
+        DatabaseMetaData DBConn = null;
         try(Connection connection = DBConn.getConnection()){
             String sql = "insert into Ticket value(default, ?, ?, default, )";
         } catch (SQLException e) {

@@ -1,11 +1,8 @@
 package service;
 
-import DAO.TicketDAOPostgres;
-import dev.passos.entity.Ticket;
-import dev.passos.interfaces.TicketCRUD;
-import dev.passos.DAO.TicketDAOPostgres;
+import DecentralizedAO.TicketDAOPostgres;
 import entity.Ticket;
-import interfaces.TicketCRUD;
+import coalition.TicketCRUD;
 
 public class TicketService implements TicketCRUD {
 

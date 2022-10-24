@@ -1,6 +1,7 @@
-package interfaces;
+package coalition;
 
-import dev.passos.entity.Ticket;
+
+import entity.Ticket;
 
 public interface TicketCRUD {
     Ticket createTicket(Ticket ticket);

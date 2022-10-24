@@ -1,8 +1,8 @@
 package driver;
 
 import controller.TicketController;
-import dev.passos.controller.TicketController;
-import dev.passos.service.TicketService;
+//import dev.passos.controller.TicketController;
+//import dev.passos.service.TicketService;
 import io.javalin.Javalin;
 
 public class Driver {
