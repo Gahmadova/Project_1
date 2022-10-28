@@ -1,29 +1,48 @@
 package driver;
 
-import controller.TicketController;
-//import dev.passos.controller.TicketController;
-//import dev.passos.service.TicketService;
+import controller.TicketsController;
+import controller.UserContoller;
+import entity.User;
 import io.javalin.Javalin;
+import io.javalin.http.Handler;
+import repositories.TicketsDAOPostgres;
+import repositories.UserDAOPostgres;
+import services.TicketService;
+import services.TicketsServiceImpl;
+import services.UserService;
+import services.UserServiceImpl;
 
 public class Driver {
+    public static UserService userService = new UserServiceImpl(new UserDAOPostgres());
+    public static TicketService ticketsService = new TicketsServiceImpl(new TicketsDAOPostgres());
+
+    public static User login = null;
+
     public static void main(String[] args) {
-        // instance Javalin server object
         Javalin app = Javalin.create();
 
-        // controllers
-        TicketController ticketController = new TicketController();
+        UserContoller userContoller = new UserContoller();
 
-        // ## tickets endpoints ##
-        app.post("/createTicket", ticketController.createTicket);
-        app.delete("/deleteTicket", ticketController.deleteTicket);
-        app.put("/updateTicket",ticketController.updateTicket);
-        app.get("/getTicket",ticketController.getTicket);
+        app.get("/user/{id}", (Handler) userContoller.getUserByIdHandler);
+        app.get("/user", (Handler) userContoller.getAllUsers);
+        app.post("/user", (Handler) userContoller.createUser);
+        app.put("/user", (Handler) userContoller.updateUserHandler);
+        app.delete("/user/{id}", (Handler) userContoller.deleteUserHandler);
 
-        // ## employees endpoints ##
 
-        // start server
+        TicketsController ticketsController = new TicketsController();
+
+        app.get("/tickets/byid/{id}", (Handler) ticketsController.getTicketsByIdHandler);
+        app.get("/tickets", (Handler) ticketsController.getAllTickets);
+        app.get("/tickets/pending", (Handler) ticketsController.getPendingTicketsHandler);
+        app.post("/tickets", (Handler) ticketsController.createTickets);
+        app.put("/tickets", (Handler) ticketsController.updateTicketsHandler);
+        app.delete("/tickets/{id}", (Handler) ticketsController.deleteTicketsHandler);
+
+        app.post("/login", (Handler) userContoller.loginUserHandler);
+        app.get("/logout", (Handler) userContoller.logoutUserHandler);
+
+
         app.start();
-
-
     }
 }
