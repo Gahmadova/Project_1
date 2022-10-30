@@ -15,12 +15,13 @@ public interface UserDAO {
 
     // UPDATE
     User UpdateUser(User user);
+    User UpdateRole(int id);
 
 
     // DELETE
     boolean deleteUserById(int id);
 
-    User createEmployee(User new_User);
 
-    User getEmployeeById(int id);
+
+
 }

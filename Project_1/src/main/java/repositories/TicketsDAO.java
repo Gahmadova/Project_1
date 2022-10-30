@@ -7,14 +7,19 @@ import java.util.List;
 
 
 public interface TicketsDAO {
-   Tickets createTickets(Tickets tickets);
+   // CRUD IMPLEMENTATION
 
-   Tickets getTicketsById(int id);
-   List<Tickets> getPendingTickets();
+      Tickets createTickets(Tickets tickets);
 
-   List<Tickets> getAllTickets();
+      Tickets getTicketsById(int id);
+      List<Tickets> getPendingTickets();
 
-   Tickets updateTickets(Tickets tickets);
+      List<Tickets> getAllTickets();
 
-   boolean deleteTicketsById(int id);
+      List<Tickets> getUserTickets(int id);
+
+      Tickets updateTickets(Tickets tickets);
+      Tickets updateStatus(Tickets tickets);
+
+      boolean deleteTicketsById(int id);
 }

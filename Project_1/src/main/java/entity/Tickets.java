@@ -8,6 +8,7 @@ public class Tickets {
     private float amount;
     private String descriptions;
     Status status = Status.PENDING;
+    private String rtypes = "Other";
 
     private int ukey;
 
@@ -22,18 +23,27 @@ public class Tickets {
         this.ukey = ukey;
         this.status = status;
     }
+    public String getrtypes(){
+        return rtypes;
+    }
+
+    public void setrtypes(String rtypes){
+
+        this.rtypes = rtypes;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Tickets)) return false;
         Tickets tickets = (Tickets) o;
-        return id == tickets.id && Float.compare(tickets.amount, amount) == 0 && ukey == tickets.ukey && Objects.equals(descriptions, tickets.descriptions) && status == tickets.status;
+        return id == tickets.id && Float.compare(tickets.amount, amount) == 0 && ukey == tickets.ukey && Objects.equals(descriptions, tickets.descriptions) && Objects.equals(rtypes,tickets.rtypes) && status == tickets.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, descriptions, status, ukey);
+
+        return Objects.hash(id, amount, descriptions, rtypes, status, ukey);
     }
 
     @Override
@@ -42,6 +52,7 @@ public class Tickets {
                 "id=" + id +
                 ", amount=" + amount +
                 ", descriptions='" + descriptions + '\'' +
+                ",types='"+rtypes +'\''+
                 ", ukey=" + ukey +
                 ", status=" + status +
                 '}';
@@ -87,6 +98,8 @@ public class Tickets {
         this.ukey = ukey;
     }
 
-    public void setStatus(com.sun.org.apache.xerces.internal.util.Status status) {
+ //   public void setStatus(com.sun.org.apache.xerces.internal.util.Status status) {
     }
-}
+
+
+

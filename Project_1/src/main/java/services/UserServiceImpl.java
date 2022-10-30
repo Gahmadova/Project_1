@@ -82,7 +82,16 @@ public class UserServiceImpl implements UserService {
             return this.userDAO.UpdateUser(user);
         }
 
-        @Override
+    @Override
+    public User UpdateRole(int id) {
+        if(Driver.login.isManager()){
+            User check_user = this.userDAO.UpdateRole(id);
+            return check_user;
+        }
+        return null;
+    }
+
+    @Override
         public boolean deleteUserById(int id) {
             return this.userDAO.deleteUserById(id);
         }
